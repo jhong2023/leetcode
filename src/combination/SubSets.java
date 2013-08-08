@@ -13,6 +13,7 @@ public class SubSets {
             ArrayList<ArrayList<Integer>> addition = new ArrayList<ArrayList<Integer>>();
             for (ArrayList<Integer> list : results) {
                 ArrayList<Integer> tmp = new ArrayList<Integer>();
+                // Don't use list.add(s), it will change the original array
                 tmp.add(s);
                 tmp.addAll(list);
                 addition.add(tmp);

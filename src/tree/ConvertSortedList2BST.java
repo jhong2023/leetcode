@@ -39,6 +39,8 @@ public class ConvertSortedList2BST {
 
         int mid = (i+j)/2;
         Result leftRes = sortedListToBST(list, i, mid - 1);
+        
+        // Very important
         if (leftRes != null) {  
             list = leftRes.next;
         }

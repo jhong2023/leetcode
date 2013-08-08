@@ -26,7 +26,6 @@ public class PermutationsUniq {
             return result;
         }
         
-        
         for (int i=0; i<intList.size(); i++) {
             if (i != 0 && intList.get(i).intValue() == intList.get(i-1).intValue() ) {
                 continue;
@@ -48,7 +47,6 @@ public class PermutationsUniq {
     }
     
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
 
     }
 

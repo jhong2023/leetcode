@@ -19,7 +19,7 @@ public class UniquePath2 {
         }
         
         for(int i=1; i<n; i++) {
-            if (obstacleGrid[i][0] == 1) {
+            if (obstacleGrid[0][i] == 1) {
                 t[0][i] = 0;
             } else {
                 t[0][i] = t[0][i-1];
@@ -40,8 +40,8 @@ public class UniquePath2 {
     }
 
     public static void main(String[] args) {
-        // System.out.println(new UniquePath2().uniquePaths(2, 2));
-        // TODO Auto-generated method stub
+    	int ob[][] = {{0,0}};
+    	new UniquePath2().uniquePathsWithObstacles(ob);
 
     }
 

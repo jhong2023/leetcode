@@ -3,6 +3,12 @@ package combination;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/*
+input		expected	
+[1], 2	     [[1,1]]
+[1,2], 3	[[1,1,1],[1,2]]
+ */
+
 public class CombinationSum {
     
     public ArrayList<ArrayList<Integer>> combinationSum(int[] candidates, int target) {
@@ -27,7 +33,9 @@ public class CombinationSum {
     }
 
     public static void main(String[] args) {
-        
+        int a[] = {1};
+        ArrayList<ArrayList<Integer>> cb = new CombinationSum().combinationSum(a, 2);
+        System.out.println(cb.size());
     }
 
 }

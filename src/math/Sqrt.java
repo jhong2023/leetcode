@@ -1,6 +1,19 @@
 package math;
 
 public class Sqrt {
+	
+	// leetcode
+	 public static int sqrt(int x) {
+	    	double x0 = x / 2.0;
+			double x1 = (x0 + x / x0) / 2.0;
+			System.out.println(x0 + " " + x1 + " " + (x0/2 + 1));
+			while (Math.abs(x1 - x0) > 0.00001) {
+				x0 = x1;
+				x1 = (x0 + x / x0) / 2.0;
+				System.out.println(x0 + " " + x1 );
+			}
+	        return (int) x1;
+	    }
     
 //    double sqrt(double n) {
 //        double i = 1;
@@ -24,7 +37,7 @@ public class Sqrt {
     }
     
     public static void main(String[] args) {
-        System.out.println(sqrt(2, 0.001));
+        System.out.println(sqrt(9));
     }
 
 }

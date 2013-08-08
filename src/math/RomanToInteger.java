@@ -1,6 +1,7 @@
 package math;
 
 import java.util.HashMap;
+import java.util.Random;
 
 public class RomanToInteger {
     
@@ -60,8 +61,10 @@ public class RomanToInteger {
     }
 
     public static void main(String[] args) {
-        RomanToInteger r = new RomanToInteger();
-        System.out.println(r.romanToInt(r.intToRoman(234325)));
+    	Random r = new Random();
+    	System.out.println(r.nextInt(100));
+//        RomanToInteger r = new RomanToInteger();
+//        System.out.println(r.intToRoman(4425));
     }
 
 }

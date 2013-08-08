@@ -11,7 +11,46 @@ public class InsertInterval {
          Interval(int s, int e) { start = s; end = e; }
     }
     
-    public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
+  public ArrayList<Interval> insert(ArrayList<Interval> intervals, Interval newInterval) {
+        
+        ArrayList<Interval> r = new ArrayList<Interval>();
+        
+        int i = 0;
+        while( i < intervals.size()) {
+            if (intervals.get(i).start > newInterval.end) {
+                r.add(newInterval);
+                break;
+            }
+            
+            if(intervals.get(i).end < newInterval.start) {
+                r.add(intervals.get(i));
+            } else {
+            
+               if (intervals.get(i).start < newInterval.start){
+                   newInterval.start = intervals.get(i).start;
+               }
+               if (intervals.get(i).end >  newInterval.end) {
+                   newInterval.end = intervals.get(i).end;
+               }
+            }
+            
+            i++;
+        }
+        
+                
+        if (i == intervals.size()) {
+            r.add(newInterval);
+        } 
+        
+        while(i < intervals.size()) {
+            r.add(intervals.get(i));
+            i++;
+        }
+        
+        return r;
+    }
+    
+    public ArrayList<Interval> insert_(ArrayList<Interval> intervals, Interval newInterval) {
         if (newInterval == null) return intervals;
         ArrayList<Interval> newintervals = new ArrayList<Interval>();
 
@@ -55,5 +94,6 @@ public class InsertInterval {
     public static void main(String[] args) {
 
     }
+    
 
 }

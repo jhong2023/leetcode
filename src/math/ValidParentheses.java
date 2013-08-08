@@ -12,7 +12,6 @@ public class ValidParentheses {
         pairMap.put('{', '}');
     }
 
-    
     static public boolean isValid(String s) {
         if (s == null || s.isEmpty()) return false;
         Stack<Character> stack = new Stack<Character>();

@@ -23,7 +23,6 @@ public class LongestCommonSubSequence {
         }
         int i = l1;
         int j = l2;
-        System.out.println(t[i][j]);
         StringBuffer buf = new StringBuffer();
         while(i>0 && j>0) {
             if (s1.charAt(i-1) == s2.charAt(j-1)) {

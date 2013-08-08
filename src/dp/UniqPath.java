@@ -2,6 +2,23 @@ package dp;
 
 public class UniqPath {
     
+	// Comb(m+n-2, m-1)
+    public int uniquePaths_(int m, int n) {
+        
+        if (m < 1 || n < 1) return 0;
+        if (m == 1 || n == 1) return 1;
+        
+    	int t = 1;
+		int k = Math.min(m-1, n-1);
+		// multiply and divide at same time to avoid over overflow
+		for(int i=1; i<=k; i++){
+			t = t * (m+n-1-i)/i;
+		}
+		
+		return t;
+	}
+    
+	// DP
     public int uniquePaths(int m, int n) {
         if (m < 1 || n < 1) return 0;
         if (m == 1 || n == 1) return 1;
@@ -24,11 +41,4 @@ public class UniqPath {
         
         return t[m-1][n-1];
     }
-
-    public static void main(String[] args) {
-        System.out.println(new UniqPath().uniquePaths(2, 2));
-        // TODO Auto-generated method stub
-
-    }
-
 }

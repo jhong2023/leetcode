@@ -4,6 +4,38 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LongestCommonPrefix {
+	
+    public String longestCommonPrefix(String[] strs) {
+  
+        
+        int size = strs.length;
+        if (size == 0) return "";
+        
+        String s = strs[0];
+        
+        // Using the shortest as first
+        for(int i=1; i<size; i++) {
+            if(strs[i].length() < s.length()) {
+                s = strs[i];
+            }
+        }
+        
+        for(int i=0; i<size; i++) {
+            int j = 0;
+            while(j < s.length() && j < strs[i].length() &&
+                s.charAt(j) == strs[i].charAt(j)) {
+                j++;
+            }
+            if(j == 0) return "";
+            s = s.substring(0, j);
+        }
+        
+        return s;
+    }
+    
+	
+	
+	////////////////////
     
     static class WordDict {
         Map<Character, WordDict> childeren;
@@ -45,7 +77,7 @@ public class LongestCommonPrefix {
     }
     
     
-    public String longestCommonPrefix(String[] strs) {
+    public String longestCommonPrefix_(String[] strs) {
         if (strs.length == 0) return "";
         WordDict dict = new WordDict(null);
         for (String str : strs) {

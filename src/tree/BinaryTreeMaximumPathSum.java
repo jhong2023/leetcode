@@ -50,7 +50,36 @@ public class BinaryTreeMaximumPathSum {
         } else {
             sum += rResult;
         }
+        
 
         return sum;
+    }
+    
+    /////////  #####################   /////////////
+    
+    class Res{
+        int max;
+        int maxRoot;
+    }
+    public int maxPathSum___(TreeNode root) {
+        Res r = maxPathSum_(root);
+        return r.max;
+    }
+    
+    Res maxPathSum_(TreeNode root) {
+        Res r = new Res();
+        if(root == null){
+            r.maxRoot = 0;
+            r.max = Integer.MIN_VALUE;
+            return r;
+        }
+        Res rl = maxPathSum_(root.left);
+        Res rr = maxPathSum_(root.right);
+        
+        r.maxRoot = 
+            Math.max(0, Math.max(rl.maxRoot, rr.maxRoot) + root.val);
+        r.max = Math.max(
+            rl.maxRoot + rr.maxRoot + root.val, Math.max(rl.max, rr.max));
+        return r;
     }
 }

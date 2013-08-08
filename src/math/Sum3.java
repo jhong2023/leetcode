@@ -18,6 +18,7 @@ public class Sum3 {
             int e = len - 1;
             int sum = -num[i];
             while (s<e) {
+            	// eliminate duplicate result
                 if (s>i+1 && num[s] == num[s-1]) {
                     s++;
                     continue;
@@ -32,6 +33,7 @@ public class Sum3 {
                     triple.add(num[s]);
                     triple.add(num[e]);
                     result.add(triple);
+                    // don't break here
                     s++;
                     e--;
                     continue;

@@ -23,6 +23,7 @@ public class GrayCode {
         return codes;
     }
     
+    // i ^ (i >> 1)
     public ArrayList<Integer> grayCode_(int n) {
         ArrayList<Integer> codes = new ArrayList<Integer>();
         int k = 1 << n;

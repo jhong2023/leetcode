@@ -2,56 +2,23 @@ package tree;
 
 public class CheckBalance {
 
-    class Result{
-        boolean isBalace;
-        int longestPath;
-        int smallestPath;
-    }
-    
-    class Node{
-        int val;
-        Node left;
-        Node right;
-    }
-    
-    boolean checkBalance(Node root) {
-        return checkBalance_(root).isBalace;
-    }
-    
-    Result checkBalance_(Node root) {
-        Result result = new Result();
-        if (root == null) {
-            result.longestPath = 0;
-            result.smallestPath = 0;
-            result.isBalace = true;
-            return result;
-        }
-        
-        Result lResult = checkBalance_(root.left);
-        if (!lResult.isBalace) {
-            result.isBalace = false;
-            return result;
-        }
-        Result rResult = checkBalance_(root.right);
-        if (!rResult.isBalace) {
-            result.isBalace = false;
-            return result;
-        }
-        
-        result.longestPath = Math.max(lResult.longestPath, rResult.longestPath) + 1;
-        result.smallestPath = Math.min(lResult.smallestPath, rResult.smallestPath) + 1;
-        if (result.longestPath - result.smallestPath > 1) {
-            result.isBalace = false;
-        } else {
-            result.isBalace = true;
-        }
-        result.isBalace = true;
-        return result;
-    }
-    
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
+    public boolean isBalanced(TreeNode root) {
+        return getHeight(root) != -1;
+     }
+     
+     int getHeight(TreeNode root){
+         if(root == null) return 0;
+         
+         int l = getHeight(root.left);
+         
+         // Move to here to improve efficiency
+         if( l == -1) return -1;
 
-    }
+         int r = getHeight(root.right);
+         
+         if(r == -1 || l-r > 1 || r-l > 1) return -1;
+         
+         return Math.max(l, r) + 1;
+     }
 
 }
