@@ -1,11 +1,11 @@
-    package math;
+package math;
 
 public class Pow {
 
     public double pow(double x, int n) {
         if (n==0) return 1.0;
-        if (x==1) return 1.0;
-        if (x==-1) return n%2==0 ? 1.0 : -1.0;
+        if (x==1) return 1.0;  // have it for large case
+        if (x==-1) return n%2==0 ? 1.0 : -1.0; // have it for large case
         if (x==0) {
             if (n>0) return 0.0;
             if (n<0) {

@@ -141,7 +141,6 @@ public class DecodeWays {
                    n +=  pre;
                }
                pre = tmp;
-                   
            }
            
            return n;

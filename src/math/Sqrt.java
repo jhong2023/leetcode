@@ -3,14 +3,14 @@ package math;
 public class Sqrt {
 	
 	// leetcode
+	// (y + x/y)/2 = y => x = y^2
 	 public static int sqrt(int x) {
 	    	double x0 = x / 2.0;
 			double x1 = (x0 + x / x0) / 2.0;
-			System.out.println(x0 + " " + x1 + " " + (x0/2 + 1));
 			while (Math.abs(x1 - x0) > 0.00001) {
+				System.out.println(x0 + " " + x1 );
 				x0 = x1;
 				x1 = (x0 + x / x0) / 2.0;
-				System.out.println(x0 + " " + x1 );
 			}
 	        return (int) x1;
 	    }
@@ -28,16 +28,36 @@ public class Sqrt {
 //        }
 //    }
 
-    static double sqrt(double x, double precision) {
+    static int sqrt_binarysearch(int n){
+    	int i = 0;
+    	int j = n+1;
+    	// here is j - i > 1
+    	while(j - i > 1){
+    		int m = (i+j)/2;
+    		if(n>= m*m) i = m;
+    		else j = m;
+    	}
+    	return i;
+    }
+    
+    static double sqrt(double x, double d) {
         if (x <= 0) return 0;
-        double r = x;
-        while (x - x/r > precision)
-        r = (r + x/r) / 2;
-        return r;
+        double i = 0;
+        double j = x + 1;
+        while (Math.abs(i-j) > d){
+        	double m = (i+j)/2;
+        	if(m*m < x){
+        		i = m;
+        	} else {
+        		j = m;
+        	}
+        	System.out.println(i+" "+j);
+        }
+        return i;
     }
     
     public static void main(String[] args) {
-        System.out.println(sqrt(9));
+        System.out.println(sqrt(0.0000001, 0.2));
     }
 
 }

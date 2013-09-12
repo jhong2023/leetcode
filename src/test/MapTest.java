@@ -1,56 +1,14 @@
 package test;
 
-import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.HashMap;
+import java.util.Map;
 
-public class MapTest implements Runnable{
-    
-    int[] a;
-    int index = 0;
-    
-    MapTest(int[] a) {
-        this.a = a;
-    }
-    
-    int fun(int i) {
-        return i+1;
-    }
-    
-    @Override
-    public void run() {
-        int i;
-        while((i = getIndex()) < a.length) {
-           // System.out.println(Thread.currentThread().getName() + " " + i);
-            a[i] = fun(a[i]);
-        }
-        try {
-            Thread.sleep(10);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-    
-    synchronized int getIndex() {
-        return (index++);
-    }
+public class MapTest {
+	
+	public static void main(String[] args) {
+		Map<String, Integer> m = new HashMap<String, Integer>();
+		System.out.println(m.containsKey("aa")); // false
+		System.out.println(m.get("aa")); // null
+	}
 
-    static int coreThreadCount = 10; 
-    static int maxThreadCount = 10;
-    public static void main(String[] args) throws InterruptedException {
-       int size = 1000000;
-       int[] a = new int[size];
-       for (int i=0; i<size; i++) {
-           a[i] = i;
-       }
-       
-       LinkedBlockingQueue<Runnable> queue = new LinkedBlockingQueue<Runnable>();
-       ThreadPoolExecutor tpe = new ThreadPoolExecutor(coreThreadCount, maxThreadCount,
-               Long.MAX_VALUE, TimeUnit.SECONDS, queue);
-       MapTest m = new MapTest(a);
-       while(true) {
-          tpe.execute(m);
-          // System.out.println(queue.size());
-       }
-    }
 }

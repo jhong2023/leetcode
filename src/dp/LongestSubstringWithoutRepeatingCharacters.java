@@ -1,8 +1,56 @@
 package dp;
 
-public class LongestSubstringWithoutRepeatingCharacters {
+import java.util.HashMap;
+import java.util.Map;
 
-    public int lengthOfLongestSubstring(String s) {
+public class LongestSubstringWithoutRepeatingCharacters {
+	
+	// most simple and bug free
+    public int lengthOfLongestSubstring_best(String s) {
+        if( s == null) return 0;
+        
+        Map<Character, Integer> m = new HashMap<Character, Integer>();
+        int len = s.length();
+        
+        int max = 0;
+        int start = -1;
+        for(int i = 0; i < len; i++){
+            char c = s.charAt(i);
+            if(m.get(c) != null && m.get(c) > start){
+                start = m.get(c);  
+            } else {
+                max = Math.max(i - start, max);
+            }
+            m.put(c, i);
+        }
+        
+        return max;
+    }
+
+    public static int lengthOfLongestSubstring(String s) {
+        Map<Character,Integer> map = new HashMap<Character, Integer>();
+        int max = 0;
+        int len = 0;
+        for(int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if(map.containsKey(c)) {
+                int t = i - map.get(c);
+                // Don't use len++
+                len = t > len ? len+1 : t;
+            } else {
+                len++;
+            }
+            // Mistake it put inside of else
+            if(len > max) {
+                max = len;
+            }
+            map.put(c, i);
+        }
+        
+        return max;
+    }
+
+    public int lengthOfLongestSubstring_(String s) {
 
         String str = s;
         if (str == null)
@@ -35,4 +83,10 @@ public class LongestSubstringWithoutRepeatingCharacters {
         }
         return max;
     }
+    
+    public static void main(String[] args) {
+//		System.out.println(lengthOfLongestSubstring("abcabcde")); // 5
+		System.out.println(lengthOfLongestSubstring("zbexrampetvhqnddjeqvuygpnkazqfrpjvoaxdpcwmjobmskskfojnewxgxnnofwltwjwnnvbwjckdmeouuzhyvhg")); // 13
+
+	}
 }

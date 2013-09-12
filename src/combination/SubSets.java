@@ -23,7 +23,35 @@ public class SubSets {
         return results;
     }
     
-    public ArrayList<ArrayList<Integer>> subsetsWithDup(int[] S) {
+    public ArrayList<ArrayList<Integer>> subsetsWithDup(int[] num) {
+        Arrays.sort(num);
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>>();
+        res.add(new ArrayList<Integer>());
+        int pre = 0;
+        int dup = 0;
+        for (int i = 0; i < num.length; i++) {
+            ArrayList<ArrayList<Integer>> newRes = new ArrayList<ArrayList<Integer>>();
+            int j = 0;
+            if(i != 0 && num[i] == pre){
+            	dup++;
+            	j = res.size()/(dup + 1) * dup;
+            } else {
+            	dup = 0;
+            }
+            for (; j < res.size(); j++) {
+                ArrayList<Integer> tmp = new ArrayList<Integer>();
+                tmp.addAll(res.get(j));
+                tmp.add(num[i]);
+                newRes.add(tmp);
+            }
+            res.addAll(newRes);
+            // don't forget to set pre
+            pre = num[i];
+        }
+        return res;
+    }
+    
+    public ArrayList<ArrayList<Integer>> subsetsWithDup_(int[] S) {
         Arrays.sort(S);
         ArrayList<ArrayList<Integer>> results = new ArrayList<ArrayList<Integer>>();
         results.add(new ArrayList<Integer>());

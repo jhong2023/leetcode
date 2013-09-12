@@ -8,11 +8,9 @@ import java.util.Map;
 public class MinWordsInString {
     
     static class WordDict {
-        Character c;
         Map<Character, WordDict> childeren;
         boolean isWord;
         public WordDict(Character c) {
-            this.c = c;
             this.childeren = new HashMap<Character, WordDict>();
         }
     }

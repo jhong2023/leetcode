@@ -42,7 +42,6 @@ public class UniquePath2 {
     public static void main(String[] args) {
     	int ob[][] = {{0,0}};
     	new UniquePath2().uniquePathsWithObstacles(ob);
-
     }
 
 }

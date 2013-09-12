@@ -5,17 +5,8 @@ import java.util.Comparator;
 import java.util.PriorityQueue;
 
 public class MergeKSortedLists {
-
-    class ListNode{
-        int val;
-        ListNode next;
-        
-        ListNode(int val) {
-            this.val = val;
-        }
-    }
     
-    public ListNode mergeKLists(ArrayList<ListNode> lists) {
+	public ListNode mergeKLists(ArrayList<ListNode> lists) {
         if (lists == null || lists.isEmpty()) return null;
         ListNode head = new ListNode(0);
         ListNode p = head;
